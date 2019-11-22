@@ -11,15 +11,15 @@ import scala.Tuple2;
 
 public class SparkDemo {
 
-        public static void main(String[] args) {
-                SparkConf conf = new SparkConf().setMaster("local").setAppName("Word Count");
-                JavaSparkContext sc = new JavaSparkContext(conf);
-                JavaRDD<String> textFile = sc.textFile("src/main/resources/shakespeare.txt");
-                JavaPairRDD<String, Integer> counts = textFile.flatMap(s -> Arrays.asList(s.split("[ ,]")).iterator())
-                                .mapToPair(word -> new Tuple2<>(word, 1)).reduceByKey((a, b) -> a + b);
-                counts.foreach(p -> System.out.println(p));
-                System.out.println("Total words: " + counts.count());
-                counts.saveAsTextFile("target/tmp/shakespeareWordCount");
-        }
+	public static void main(String[] args) {
+		SparkConf conf = new SparkConf().setMaster("local").setAppName("Word Count");
+		JavaSparkContext sc = new JavaSparkContext(conf);
+		JavaRDD<String> textFile = sc.textFile("file:///home/maria_dev/shakespeare.txt");
+		JavaPairRDD<String, Integer> counts = textFile.flatMap(s -> Arrays.asList(s.split("[ ,]")).iterator())
+				.mapToPair(word -> new Tuple2<>(word, 1)).reduceByKey((a, b) -> a + b);
+		counts.foreach(p -> System.out.println(p));
+		System.out.println("Total words: " + counts.count());
+		counts.saveAsTextFile("file:///home/maria_dev/tmp/shakespeareWordCount");
+	}
 
 }
