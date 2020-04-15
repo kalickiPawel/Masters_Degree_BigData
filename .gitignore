@@ -4,3 +4,5 @@
 /.classpath
 /.vscode
 /tmp
+/.idea
+sparkexample.iml

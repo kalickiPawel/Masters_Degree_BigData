@@ -14,12 +14,12 @@ public class SparkDemo {
 	public static void main(String[] args) {
 		SparkConf conf = new SparkConf().setMaster("local").setAppName("Word Count");
 		JavaSparkContext sc = new JavaSparkContext(conf);
-		JavaRDD<String> textFile = sc.textFile("file:///home/maria_dev/shakespeare.txt");
+//		JavaRDD<String> textFile = sc.textFile("file:///home/maria_dev/shakespeare.txt"); // œcie¿ka bezwglêdna
+		JavaRDD<String> textFile = sc.textFile("shakespeare.txt"); // œciezka wzglêdna
 		JavaPairRDD<String, Integer> counts = textFile.flatMap(s -> Arrays.asList(s.split("[ ,]")).iterator())
 				.mapToPair(word -> new Tuple2<>(word, 1)).reduceByKey((a, b) -> a + b);
 		counts.foreach(p -> System.out.println(p));
 		System.out.println("Total words: " + counts.count());
-		counts.saveAsTextFile("file:///home/maria_dev/tmp/shakespeareWordCount");
 		sc.stop();
 		sc.close();
 	}
