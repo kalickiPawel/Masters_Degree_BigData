@@ -8,16 +8,9 @@ mvn package
 
 Run project on HDP instance:
 ```
-spark-submit --class "exercise01.Exercise01" --master local ./sparkexample-0.0.1-SNAPSHOT.jar
+spark-submit --class "exercise{x}.Exercise{x}" --master local ./sparkexample-0.0.1-SNAPSHOT.jar
 ```
-or
-```
-spark-submit --class "exercise02.Exercise02" --master local ./sparkexample-0.0.1-SNAPSHOT.jar
-```
-or
-```
-spark-submit --class "exercise03.Exercise03" --master local ./sparkexample-0.0.1-SNAPSHOT.jar
-```
+{x} -> replace to exercise number e.g. 01, 02, 03, etc.
 
 Run project on local PC (without Hadoop):
 ```
