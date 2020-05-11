@@ -16,23 +16,15 @@ public class Exercise02 {
 		JavaSparkContext sc = new JavaSparkContext(conf);
 
 		// JavaRDD<String> textFile =
-		// sc.textFile("file:///home/maria_dev/shakespeare.txt"); // �cie�ka bezwgl�dna
-		// JavaRDD<String> textFile = sc.textFile("shakespeare.txt"); // �ciezka
-		// wzgl�dna
-		// JavaRDD<String> slowa = textFile.flatMap(linia ->
-		// Arrays.asList(linia.split("[ ,.?!]")).iterator());
-		// JavaPairRDD<String, Integer> slowaZJedynka = slowa.mapToPair(slowo -> new
-		// Tuple2<>(slowo, 1));
-		// JavaPairRDD<String, Integer> slowaZLicznikiem = slowaZJedynka.reduceByKey((a,
-		// b) -> a + b);
-		// slowaZLicznikiem.foreach(el -> System.out.println(el));
+		// sc.textFile("file:///home/maria_dev/ratings.csv"); // sciezka bezwgledna
 
-		JavaRDD<String> textFile = sc.textFile("ratings.csv");
+		JavaRDD<String> textFile = sc.textFile("../data/ratings.csv");
 		JavaRDD<String[]> tablice = textFile.map(linia -> linia.split(","));
 
 		JavaPairRDD<String, Integer> tabliceZJedynka = tablice.mapToPair(tablica -> new Tuple2<>(tablica[1], 1));
 		JavaPairRDD<String, Integer> tabliceZLicznikiem = tabliceZJedynka.reduceByKey((a, b) -> a + b);
 
+		// alternatywa dla swap:
 		// JavaPairRDD<Integer, String> drugaTabliceZJedynka = tabliceZLicznikiem
 		// .mapToPair(t -> new Tuple2<Integer, String>(t._2, t._1));
 
@@ -41,10 +33,6 @@ public class Exercise02 {
 
 		posortowaneTablice.foreach(el -> System.out.println(el));
 
-		// JavaPairRDD<String, Integer> counts = textFile.flatMap(s ->
-		// Arrays.asList(s.split("[ ,]")).iterator())
-		// .mapToPair(word -> new Tuple2<>(word, 1)).reduceByKey((a, b) -> a + b);
-		// counts.foreach(p -> System.out.println(p));
 		// System.out.println("Total words: " + counts.count());
 
 		sc.stop();
