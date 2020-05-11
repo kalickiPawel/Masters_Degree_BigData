@@ -1,8 +1,8 @@
 target/
-/.settings/
-/.project
-/.classpath
-/.vscode
+.settings/
+.project
+.classpath
+.vscode
 /tmp
-/.idea
+.idea
 sparkexample.iml
