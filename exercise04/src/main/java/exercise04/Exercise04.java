@@ -17,9 +17,9 @@ public class Exercise04 {
 
 		// I removed headers from files before run this program
 
-		JavaRDD<String> ratings = sc.textFile("../data/ratings.csv");
-		JavaRDD<String> movies = sc.textFile("../data/movies.csv");
-		JavaRDD<String> tags = sc.textFile("../data/tags.csv");
+		JavaRDD<String> ratings = sc.textFile("data/ratings.csv");
+		JavaRDD<String> movies = sc.textFile("data/movies.csv");
+		JavaRDD<String> tags = sc.textFile("data/tags.csv");
 
 		JavaPairRDD<String, Integer> titlesGenreCount = movies.map(s -> s.split("[,]"))
 				.mapToPair(s -> new Tuple2<>(s[1], s[2])).mapToPair(s -> new Tuple2<>(s._1, s._2.split("[|]")))
