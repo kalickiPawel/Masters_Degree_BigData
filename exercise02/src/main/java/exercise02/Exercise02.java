@@ -18,7 +18,7 @@ public class Exercise02 {
 		// JavaRDD<String> textFile =
 		// sc.textFile("file:///home/maria_dev/ratings.csv"); // sciezka bezwgledna
 
-		JavaRDD<String> textFile = sc.textFile("../data/ratings.csv");
+		JavaRDD<String> textFile = sc.textFile("data/ratings.csv");
 		JavaRDD<String[]> tablice = textFile.map(linia -> linia.split(","));
 
 		JavaPairRDD<String, Integer> tabliceZJedynka = tablice.mapToPair(tablica -> new Tuple2<>(tablica[1], 1));
