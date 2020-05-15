@@ -5,4 +5,4 @@ target/
 .vscode
 /tmp
 .idea
-.iml
+*.iml
