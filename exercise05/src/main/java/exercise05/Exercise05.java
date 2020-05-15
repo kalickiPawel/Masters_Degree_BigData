@@ -21,8 +21,8 @@ public class Exercise05 {
 
 		// I removed headers from files before run this program
 
-		JavaRDD<String> ratings = sc.textFile("../data/ratings.csv");
-		JavaRDD<String> movies = sc.textFile("../data/movies.csv");
+		JavaRDD<String> ratings = sc.textFile("data/ratings.csv");
+		JavaRDD<String> movies = sc.textFile("data/movies.csv");
 
 		JavaPairRDD<String, Integer> ratingsCount = movies.map(linia -> linia.split(","))
 				.mapToPair(tablica -> new Tuple2<>(tablica[1], 1)).reduceByKey((a, b) -> a + b)
