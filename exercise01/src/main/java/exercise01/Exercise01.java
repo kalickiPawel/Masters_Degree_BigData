@@ -16,7 +16,7 @@ public class Exercise01 {
 		JavaSparkContext sc = new JavaSparkContext(conf);
 		// JavaRDD<String> textFile =
 		// sc.textFile("file:///home/maria_dev/shakespeare.txt"); // ścieżka bezwzględna
-		JavaRDD<String> textFile = sc.textFile("../data/shakespeare.txt"); // ścieżka względna
+		JavaRDD<String> textFile = sc.textFile("data/shakespeare.txt"); // ścieżka względna
 		JavaPairRDD<String, Integer> counts = textFile.flatMap(s -> Arrays.asList(s.split("[ ,]")).iterator())
 				.mapToPair(word -> new Tuple2<>(word, 1)).reduceByKey((a, b) -> a + b);
 		counts.foreach(p -> System.out.println(p));
