@@ -6,3 +6,4 @@ target/
 /tmp
 .idea
 *.iml
+*.properties
