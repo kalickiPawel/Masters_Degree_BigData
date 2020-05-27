@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 <modelVersion>4.0.0</modelVersion>
 <groupId>pl.edu.zut.wi.spark</groupId>
-<artifactId>supplement_06</artifactId>
+<artifactId>supplement_01</artifactId>
 <version>0.0.1-SNAPSHOT</version>
-<name>supplement-06</name>
+<name>supplement-01</name>
 
 <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -71,7 +71,7 @@
                         <addClasspath>true</addClasspath>
                         <classpathPrefix>libs/</classpathPrefix>
                         <mainClass>
-                            exercise06.Exercise06
+                            supplement01.Supplement01
                         </mainClass>
                     </manifest>
                 </archive>
