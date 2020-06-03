@@ -2,14 +2,11 @@ package exercise07;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaSparkContext;
-import org.apache.spark.api.java.function.MapFunction;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Encoders;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.*;
 
 import static org.apache.spark.sql.functions.*;
@@ -63,6 +60,11 @@ public class Exercise07 {
 				.show();
 
 		// Task 03
-
+		products.join(departments, String.valueOf(col("department_id")))
+				.groupBy(col("department"))
+				.count()
+				.orderBy(col("count"))
+				.withColumn("procent", col("count").divide(products.count()*100))
+				.show();
 	}
 }
